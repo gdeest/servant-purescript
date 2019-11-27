@@ -170,7 +170,7 @@ genBuildHeader (HeaderArg arg) = let
     encodedArgName = strictText . textURLEncode True $ argText
   in
     align $ "RequestHeader " <> dquotes encodedArgName
-      <+> parens ("encodeHeader spOpts_'" <+> psVar argText)
+      <+> parens ("gDefaultToURLPiece" <+> psVar argText)
 genBuildHeader (ReplaceHeaderArg _ _) = error "ReplaceHeaderArg - not yet implemented!"
 
 reqsToImportLines :: [Req PSType] -> ImportLines
